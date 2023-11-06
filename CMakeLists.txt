@@ -7,8 +7,8 @@ project(${PROJECT_NAME})
 
 add_executable(no_thread no_thread.c)
 add_executable(naive_thread naive_thread.c)
-add_executable(open_mp open_mp.c)
+add_executable(openmp openmp.c)
 
-target_link_libraries(no_trhead PRIVATE m)
+target_link_libraries(no_thread PRIVATE m)
 target_link_libraries(naive_thread PRIVATE m pthread)
-target_link_libraries(open_mp PRIVATE m)
+target_link_libraries(openmp PRIVATE m)
