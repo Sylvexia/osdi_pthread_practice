@@ -5,16 +5,16 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define DIVISIONS 100000000
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
-const double upper = 1.0;
-const double lower = 0.0;
-double width = (upper - lower) / DIVISIONS;
+struct ThreadParams
+{
+    int param1;
+    char param2;
+};
 
 double upper_sum = 0.0;
 double lower_sum = 0.0;
-int numCPU = 0;
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 double f(double x) { return sqrt(1.0 - x * x); }
 
@@ -46,10 +46,17 @@ void cal_pi(void *arg)
 
 int main()
 {
+    int devision = 100000000;
+    const double upper = 1.0;
+    const double lower = 0.0;
+    double width = (upper - lower) / devision;
+    int numCPU = 0;
+
     int maxCPU = sysconf(_SC_NPROCESSORS_ONLN);
     printf("Number of available CPU: %d\n", maxCPU);
+
     numCPU = maxCPU;
-    printf("Number of current CPU: %d\n", numCPU);
+    printf("Number of running CPU: %d\n", numCPU);
     pthread_t *tid = (pthread_t *)malloc(sizeof(pthread_t) * numCPU);
 
     for (long i = 0; i < numCPU; i++)

@@ -20,7 +20,7 @@ int main()
     int maxCPU = sysconf(_SC_NPROCESSORS_ONLN);
     printf("Number of available CPU: %d\n", maxCPU);
     int numCPU = maxCPU;
-    printf("Number of current CPU: %d\n", numCPU);
+    printf("Number of running CPU: %d\n", numCPU);
 
 
     #pragma omp parallel for num_threads(numCPU) reduction(+:upper_sum, lower_sum)
