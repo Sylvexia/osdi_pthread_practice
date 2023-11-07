@@ -7,27 +7,38 @@
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
-struct ThreadParams
+typedef struct ThreadParams
 {
-    int param1;
-    char param2;
-};
+    int numCPU;
+    int id;
+    int division;
+    double lower;
+    double upper;
+} ThreadParams;
 
 double upper_sum = 0.0;
 double lower_sum = 0.0;
 
 double f(double x) { return sqrt(1.0 - x * x); }
 
-void cal_pi(void *arg)
+void cal_pi(void *args)
 {
-    int thread_id = (intptr_t)arg;
+    ThreadParams *params = (struct ThreadParams *)args;
+
+    int numCPU = params->numCPU;
+    int thread_id = params->id;
+    int division = params->division;
+    double lower = params->lower;
+    double upper = params->upper;
     // printf("Thread %d is running\n", thread_id);
 
-    int start = thread_id * (DIVISIONS / numCPU);
-    int end = ((thread_id + 1) * (DIVISIONS / numCPU));
+    double width = (upper - lower) / division;
+
+    int start = thread_id * (division / numCPU);
+    int end = ((thread_id + 1) * (division / numCPU));
     // printf("Thread %d is calculating from %d to %d\n", thread_id, start, end);
-    if (end > DIVISIONS)
-        end = DIVISIONS;
+    if (end > division)
+        end = division;
 
     double local_lower_sum = 0.0;
     double local_upper_sum = 0.0;
@@ -46,21 +57,30 @@ void cal_pi(void *arg)
 
 int main()
 {
-    int devision = 100000000;
+    int division = 100000000;
     const double upper = 1.0;
     const double lower = 0.0;
-    double width = (upper - lower) / devision;
     int numCPU = 0;
 
     int maxCPU = sysconf(_SC_NPROCESSORS_ONLN);
     printf("Number of available CPU: %d\n", maxCPU);
-
     numCPU = maxCPU;
     printf("Number of running CPU: %d\n", numCPU);
+
+    ThreadParams params = {
+        .numCPU = numCPU,
+        .id = 0,
+        .division = division,
+        .lower = lower,
+        .upper = upper};
+
     pthread_t *tid = (pthread_t *)malloc(sizeof(pthread_t) * numCPU);
 
     for (long i = 0; i < numCPU; i++)
-        pthread_create(&tid[i], NULL, (void *)cal_pi, (void *)i);
+    {
+        params.id = i;
+        pthread_create(&tid[i], NULL, (void *)cal_pi, &params);
+    }
 
     for (int i = 0; i < numCPU; i++)
         pthread_join(tid[i], NULL);
