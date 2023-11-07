@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 set(PROJECT_NAME pthread_os)
 # set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=thread")
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -ffast-math")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -ffast-math -fopenmp")
 
 project(${PROJECT_NAME})
 
