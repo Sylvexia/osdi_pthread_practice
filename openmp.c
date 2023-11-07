@@ -67,8 +67,6 @@ int main(int argc, char *argv[])
         lower_sum += f((i + 1) * width) * width;
     }
 
-    printf("division the fuck: %lld\n", division);
-
     printf("upper pi_value: %0.15lf\n", upper_sum * 4);
     printf("lower pi_value: %0.15lf\n", lower_sum * 4);
 

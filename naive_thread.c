@@ -122,5 +122,8 @@ int main(int argc, char *argv[])
     printf("upper pi_value: %0.15lf\n", upper_sum * 4);
     printf("lower pi_value: %0.15lf\n", lower_sum * 4);
 
+    free(thread_params);
+    free(tid);
+
     return 0;
 }

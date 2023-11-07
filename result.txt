@@ -1,0 +1,380 @@
+# no thread
+
+Number of division: 10000000000
+upper pi_value: 3.141592653790136
+lower pi_value: 3.141592653390135
+
+real    0m44.198s
+user    0m44.183s
+sys     0m0.000s
+
+# naive thread
+
+Number of available CPU: 16
+Number of running CPU: 1
+Number of division: 10000000000
+upper pi_value: 3.141592653790136
+lower pi_value: 3.141592653390135
+
+real    0m32.802s
+user    0m32.795s
+sys     0m0.000s
+
+Number of available CPU: 16
+Number of running CPU: 2
+Number of division: 10000000000
+upper pi_value: 3.141592653789905
+lower pi_value: 3.141592653389904
+
+real    0m45.248s
+user    1m30.369s
+sys     0m0.008s
+
+Number of available CPU: 16
+Number of running CPU: 3
+Number of division: 10000000000
+upper pi_value: 3.141592653789806
+lower pi_value: 3.141592653389811
+
+real    0m28.926s
+user    1m2.457s
+sys     0m0.009s
+
+Number of available CPU: 16
+Number of running CPU: 4
+Number of division: 10000000000
+upper pi_value: 3.141592653789749
+lower pi_value: 3.141592653389749
+
+real    0m26.666s
+user    1m39.412s
+sys     0m0.005s
+
+Number of available CPU: 16
+Number of running CPU: 5
+Number of division: 10000000000
+upper pi_value: 3.141592653789778
+lower pi_value: 3.141592653389778
+
+real    0m21.366s
+user    1m25.985s
+sys     0m0.001s
+
+Number of available CPU: 16
+Number of running CPU: 6
+Number of division: 10000000000
+upper pi_value: 3.141592653789741
+lower pi_value: 3.141592653389753
+
+real    0m23.048s
+user    1m57.674s
+sys     0m0.004s
+
+Number of available CPU: 16
+Number of running CPU: 7
+Number of division: 10000000000
+upper pi_value: 3.141592653789746
+lower pi_value: 3.141592653389757
+
+real    0m19.346s
+user    1m55.582s
+sys     0m0.020s
+
+Number of available CPU: 16
+Number of running CPU: 8
+Number of division: 10000000000
+upper pi_value: 3.141592653789688
+lower pi_value: 3.141592653389689
+
+real    0m22.032s
+user    2m17.411s
+sys     0m0.004s
+
+Number of available CPU: 16
+Number of running CPU: 9
+Number of division: 10000000000
+upper pi_value: 3.141592653789612
+lower pi_value: 3.141592653389618
+
+real    0m21.079s
+user    2m31.214s
+sys     0m0.040s
+
+umber of available CPU: 16
+Number of running CPU: 10
+Number of division: 10000000000
+upper pi_value: 3.141592653789756
+lower pi_value: 3.141592653389757
+
+real    0m20.362s
+user    2m35.050s
+sys     0m0.032s
+
+Number of available CPU: 16
+Number of running CPU: 11
+Number of division: 10000000000
+upper pi_value: 3.141592653789627
+lower pi_value: 3.141592653389632
+
+real    0m20.308s
+user    2m41.963s
+sys     0m0.016s
+
+Number of available CPU: 16
+Number of running CPU: 12
+Number of division: 10000000000
+upper pi_value: 3.141592653789672
+lower pi_value: 3.141592653389683
+
+real    0m16.317s
+user    2m41.867s
+sys     0m0.012s
+
+Number of available CPU: 16
+Number of running CPU: 13
+Number of division: 10000000000
+upper pi_value: 3.141592653789681
+lower pi_value: 3.141592653389691
+
+real    0m18.245s
+user    3m2.508s
+sys     0m0.036s
+
+(base) sylvex@sylvex-Aspire-A715-51G:~/Desktop/osdi_pthread_practice/build$ time ./naive_thread -t 14 -n 10000000000
+Number of available CPU: 16
+Number of running CPU: 14
+Number of division: 10000000000
+upper pi_value: 3.141592653789612
+lower pi_value: 3.141592653389623
+
+real    0m15.323s
+user    3m2.689s
+sys     0m0.045s
+
+Number of available CPU: 16
+Number of running CPU: 15
+Number of division: 10000000000
+upper pi_value: 3.141592653789523
+lower pi_value: 3.141592653389542
+
+real    0m16.814s
+user    3m18.440s
+sys     0m0.080s
+
+Number of available CPU: 16
+Number of running CPU: 16
+Number of division: 10000000000
+upper pi_value: 3.141592653789842
+lower pi_value: 3.141592653389843
+
+real    0m16.653s
+user    3m43.041s
+sys     0m0.108s
+
+# openmp
+
+Number of available CPU: 16
+Number of running CPU: 1
+Number of division: 10000000000
+upper pi_value: 3.141592653790136
+lower pi_value: 3.141592653390135
+
+real    0m39.919s
+user    0m39.915s
+sys     0m0.000s
+
+Number of available CPU: 16
+Number of running CPU: 2
+Number of division: 10000000000
+upper pi_value: 3.141592653789905
+lower pi_value: 3.141592653389904
+
+real    0m21.815s
+user    0m43.617s
+sys     0m0.000
+
+Number of available CPU: 16
+Number of running CPU: 3
+Number of division: 10000000000
+upper pi_value: 3.141592653789811
+lower pi_value: 3.141592653389811
+
+real    0m15.662s
+user    0m46.957s
+sys     0m0.004s
+
+Number of available CPU: 16
+Number of running CPU: 4
+Number of division: 10000000000
+upper pi_value: 3.141592653789749
+lower pi_value: 3.141592653389749
+
+real    0m12.857s
+user    0m51.323s
+sys     0m0.008s
+
+Number of available CPU: 16
+Number of running CPU: 5
+Number of division: 10000000000
+upper pi_value: 3.141592653789778
+lower pi_value: 3.141592653389778
+
+real    0m13.881s
+user    0m56.161s
+sys     0m0.001s
+
+Number of available CPU: 16
+Number of running CPU: 6
+Number of division: 10000000000
+upper pi_value: 3.141592653789775
+lower pi_value: 3.141592653389775
+
+real    0m12.094s
+user    1m1.794s
+sys     0m0.000s
+
+Number of available CPU: 16
+Number of running CPU: 7
+Number of division: 10000000000
+upper pi_value: 3.141592653789780
+lower pi_value: 3.141592653389780
+
+real    0m12.575s
+user    1m5.038s
+sys     0m0.000s
+
+Number of available CPU: 16
+Number of running CPU: 8
+Number of division: 10000000000
+upper pi_value: 3.141592653789689
+lower pi_value: 3.141592653389689
+
+real    0m11.707s
+user    1m9.481s
+sys     0m0.000s
+
+Number of available CPU: 16
+Number of running CPU: 9
+Number of division: 10000000000
+upper pi_value: 3.141592653789617
+lower pi_value: 3.141592653389618
+
+real    0m10.906s
+user    1m13.560s
+sys     0m0.001s
+
+Number of available CPU: 16
+Number of running CPU: 10
+Number of division: 10000000000
+upper pi_value: 3.141592653789756
+lower pi_value: 3.141592653389757
+
+real    0m11.056s
+user    1m16.864s
+sys     0m0.005s
+
+Number of available CPU: 16
+Number of running CPU: 11
+Number of division: 10000000000
+upper pi_value: 3.141592653789632
+lower pi_value: 3.141592653389632
+
+real    0m10.638s
+user    1m21.052s
+sys     0m0.001s
+
+Number of available CPU: 16
+Number of running CPU: 12
+Number of division: 10000000000
+upper pi_value: 3.141592653789707
+lower pi_value: 3.141592653389707
+
+real    0m10.205s
+user    1m25.145s
+sys     0m0.001s
+
+Number of available CPU: 16
+Number of running CPU: 13
+Number of division: 10000000000
+upper pi_value: 3.141592653789705
+lower pi_value: 3.141592653389705
+
+real    0m9.829s
+user    1m30.333s
+sys     0m0.005s
+
+Number of available CPU: 16
+Number of running CPU: 14
+Number of division: 10000000000
+upper pi_value: 3.141592653789647
+lower pi_value: 3.141592653389646
+
+real    0m9.646s
+user    1m35.936s
+sys     0m0.024s
+
+Number of available CPU: 16
+Number of running CPU: 15
+Number of division: 10000000000
+upper pi_value: 3.141592653789650
+lower pi_value: 3.141592653389650
+
+real    0m9.963s
+user    1m54.352s
+sys     0m0.024s
+
+Number of available CPU: 16
+Number of running CPU: 16
+Number of division: 10000000000
+upper pi_value: 3.141592653789843
+lower pi_value: 3.141592653389843
+
+real    0m9.619s
+user    2m0.975s
+sys     0m0.012s
+
+# hissatsu
+
+## no thread
+
+Number of division: 10000000000
+upper pi_value: 3.141592653790136
+lower pi_value: 3.141592653390135
+
+real    0m12.822s
+user    0m12.821s
+sys     0m0.004s
+
+## naive thread
+
+Number of available CPU: 16
+Number of running CPU: 1
+Number of division: 10000000000
+upper pi_value: 3.141592653790136
+lower pi_value: 3.141592653390135
+
+real    0m12.826s
+user    0m12.820s
+sys     0m0.008s
+
+Number of available CPU: 16                                                                                                                                                               [0/518]
+Number of running CPU: 16                                                                       
+Number of division: 10000000000                                                                 
+upper pi_value: 3.141592653789842       
+lower pi_value: 3.141592653389843
+                                                                                                
+real    0m2.380s                                                                                
+user    0m34.222s                 
+sys     0m0.000s
+
+## openmp
+
+Number of available CPU: 16
+Number of running CPU: 16
+Number of division: 10000000000
+upper pi_value: 3.141592653789842
+lower pi_value: 3.141592653389843
+
+real    0m2.465s
+user    0m34.916s
+sys     0m0.004s
