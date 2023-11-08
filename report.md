@@ -68,11 +68,26 @@ Memory: 3564MiB / 15688MiB
 ## The Answer to the documents:
 
 1. What is the computation time that derive from the command ```time```? And explain the meaning of ```real```, ```user```, ```sys```.
-    In ```time```: 
-    - ```real``` means the time elapsed in real world.
-    - ```user``` means the time spent on CPU in user mode.
-    - ```sys``` means the time spent on CPU in kernel mode.
-    - The time in ```user``` and ```sys``` will add up accross CPU core.
+    - The best performance of my thread model is with optimization flag turned on under the precision of 9th decimal point and division 1e10:
+
+    |real|user|sys|
+    |---|---|---|
+    |2.431s|34.000s|0.005s|
+
+    Compared to the original no thread with no optmization turned on:
+    |real|user|sys|
+    |---|---|---|
+    |44.198s|44.183s|0.000s|
+
+    Unfair comparison: I've got 1818% performance boost!
+
+    More result can be found in the result.txt!
+    
+    - In ```time```: 
+        - ```real``` means the time elapsed in real world.
+        - ```user``` means the time spent on CPU in user mode.
+        - ```sys``` means the time spent on CPU in kernel mode.
+        - The time in ```user``` and ```sys``` will add up accross CPU core.
 2. Performance through out the core: (n=1e10) (precision accurate to the 9th decimal point)
 
     ![performance](image/Performance.png)   
@@ -102,3 +117,10 @@ Memory: 3564MiB / 15688MiB
 - OpenMP seems to have better parallel performance when compiler has no optimize flag. My thread model performance fluctuate a lot in comparison.
 - With the optimize flag turned on, the performance is consistent, and gain 300% to 680% speed up.
 - ```-fsanitize=thread``` can help you resolve the data race, which turns out extremely helpful for debugging.
+- ```getopt``` is helpful for setting the flag and better testing.
+
+## What I can improve
+
+- I have no good way to convert the division and precision together. I simply run several division number to get the target precision.
+- I was hoping for getting to 10th decimal ponit, maybe there's too many incremental error. I have no good way to compute that precise.
+- Different thread number may introduce slight number fluctuation, I believe it's due to the division is not associative. Which is caused by the precision loss and no guarantee which thread local sum is complete first.
