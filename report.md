@@ -77,6 +77,7 @@ Memory: 3564MiB / 15688MiB
     |2.431s|34.000s|0.005s|
 
     Compared to the original no thread with no optmization turned on:
+    
     |real|user|sys|
     |---|---|---|
     |44.198s|44.183s|0.000s|
@@ -96,6 +97,7 @@ Memory: 3564MiB / 15688MiB
 3. Special way to speed up the computation:
 
     1. Instead of calculate upper and lower bound respectively every iteration in a loop, we can calculate lower bound using the last upper bound value:
+
         ```
             double local_upper = f((start) * width) * width;
             double local_lower = 0.0;
@@ -108,6 +110,7 @@ Memory: 3564MiB / 15688MiB
             }
 
         ```
+
     2. Lets say division n = 1600, thread t = 16, we separate 0~99, 100~199, ... 900~999 th division and calculate the thread local sum respectively. After thread joined, simply add those 16 sum together.
     3. The Optimized and normal is simply setting the compiler flag: ```-O3 -ffast-math```, the ```-ffast-math``` is an aggressive optimization sacrificing some precision for performance. For this, the precision is acceptable so far. For my implementation, the precision both drift away at 10th decimal point no matter the ffast-math is on or not. 
     4. Do not share the data between threads! The local sum in a thread is independant!
@@ -117,12 +120,12 @@ Memory: 3564MiB / 15688MiB
 
 - For reusing the result for last iteration, its not much of speed up or even slower, it really depends on the optimization of compiler. For single threaded, non-optimized flag it do have 37% speed up, but not multithreaded.
 - OpenMP seems to have better parallel performance when compiler has no optimize flag. My thread model performance fluctuate a lot in comparison.
-- With the optimize flag turned on, the performance is consistent, and gain 300% to 680% speed up.
+- With the optimize flag turned on, the performance with more core is consistent, and gain 300% to 680% speed up.
 - ```-fsanitize=thread``` can help you resolve the data race, which turns out extremely helpful for debugging.
 - ```getopt``` is helpful for setting the flag and better testing.
 
 ## What I can improve
 
 - I have no good way to convert the division and precision together. I simply run several division number to get the target precision.
-- I was hoping for getting to 10th decimal ponit, maybe there's too many incremental error. I have no good way to compute that precise.
+- I was hoping for getting to 10th decimal point, maybe there's too many incremental error. I have no good way to compute that precise.
 - Different thread number may introduce slight number fluctuation, I believe it's due to the division is not associative. Which is caused by the precision loss and no guarantee which thread local sum is complete first.
