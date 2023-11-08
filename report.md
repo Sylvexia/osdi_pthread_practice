@@ -4,6 +4,8 @@ HW_5: Using pthread to calculate pi
 
 Name/ID: Sylvex Hung/612410065
 
+The github link: https://github.com/Sylvexia/osdi_pthread_practice
+
 ## What Does the Program Do?
 
 It calculate pi upper bound and lower bound by calculate the area of quarter circle area. The way it calculate the area is simply divide the area to several rectangle verticle to the x-axis.
